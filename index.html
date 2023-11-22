@@ -5,16 +5,27 @@
     </body>
     <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-    <!-- import React -->
     <script>
         const root = document.getElementById("root");
-        const span = React.createElement(
-            "span", 
-            {id:"sexy-span", style:{color:"red"}}, 
-            "Hello I'm span");
-        <!-- ReactJS로 sexy-span id를 가진 span element를 생성 -->
-        <!-- innertext는 "Hello I'm span" -->
-        ReactDOM.render(span, root);
-        <!-- span이라는 React element를 HTML의 root에 rendering -->
+        const h3 = React.createElement(
+            "h3", 
+            {
+                id: "title",
+                onMouseEnter: () => console.log("Mouse enter")
+            }, 
+            "Hello I'm span"
+        );
+        const btn = React.createElement(
+            "button", 
+            {
+                style: {backgroundColor: "tomato"},
+                onClick: () => console.log("I'm clicked")
+            }, 
+            "Click me"
+        );
+        <!-- (element이름, properties / eventListener, innerText) -->
+        const container = React.createElement("div", null, [h3, btn]);
+        <!-- div element 만들고 array로 여러 개 동시에 표현하기 -->
+        ReactDOM.render(container, root);
     </script>
 </html>
