@@ -9,17 +9,27 @@
     <!-- 브라우저는 JSX를 이해 못함 따라서 Babel로 JSX를 변환 -->
     <script type="text/babel">
         const root = document.getElementById("root");
-        const Title = (
-            <h3 id="title" onMouseEnter={() => console.log("Mouse enter")}>
-                Hello I'm title
-            </h3>
-        );
-        const Button = (
+        function Title() {
+            return (
+                <h3 id="title" onMouseEnter={() => console.log("Mouse enter")}>
+                    Hello I'm title
+                </h3>
+            )
+        };
+        const Button = () => (
             <button style={{backgroundColor:"tomato"}} onClick={() => console.log("I'm clicked")}>
                 Click me
             </button>
         );
-        const container = React.createElement("div", null, [Title, Button]);
-        ReactDOM.render(container, root);
+        const Container = () => (
+            <div>
+                <Title/>
+                <Button/>
+                {/*JSX에서 주석하는 방법*/}
+                {/*Title과 Button을 함수화해서 렌더링*/}
+                {/*이름을 title, button으로 지어버리면 내가 만든 Title 태그가 아니라 title 태그로 인식*/}
+            </div>
+        );
+        ReactDOM.render(<Container/>, root);
     </script>
 </html>
