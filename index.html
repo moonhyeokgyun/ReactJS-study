@@ -13,15 +13,21 @@
             const onChange = (event) => {
                 setMinutes(event.target.value);
             };
+            const reset = () => {
+                setMinutes(0);
+            };
             return (
                 <div>
                     <h1 className="hi">Super coverter</h1>
-                    <label htmlFor="Minutes">Minutes</label>
-                    <input value={minutes} onChange={onChange} id="Minutes" placeholder="Minutes" type="number"/>
-                    <h4>You want to convert {minutes}</h4>
-                    <label htmlFor="Hours">Hours</label>
-                    <input id="Hours" placeholder="Hours" type="number"/>
-                    {/*JSX에서는 class를 className으로, for을 htmlFor로 사용*/}
+                    <div>
+                        <label htmlFor="Minutes">Minutes</label>
+                        <input value={minutes} onChange={onChange} id="Minutes" placeholder="Minutes" type="number"/>
+                    </div>
+                    <div>
+                        <label htmlFor="Hours">Hours</label>
+                        <input value={Math.round(minutes / 60)} id="Hours" placeholder="Hours" type="number"/>
+                    </div>
+                    <button onClick={reset}>Reset</button>
                 </div>
             )
         };
