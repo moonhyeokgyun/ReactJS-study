@@ -11,24 +11,8 @@
         function App() {
             const [counter, setCounter] = React.useState(0);
             const onClick = () => {
-                setCounter(counter + 1);
+                setCounter((current) => current + 1);
             };
-            {/*
-                const x = [1,2,3]
-                const a = x[0]
-                const b = x[1]
-                const c = x[2]
-
-                const x = [1,2,3]
-                const [a,b,c] = x
-            */}
-            {/*
-                const data = React.useState(초기값)
-                console.log(data)
-
-                [0,f] 출력됨
-                [초기값, 적용할 함수]
-            */}
             return (
                 <div>
                     <h3>Total clicks: {counter}</h3>
