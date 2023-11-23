@@ -9,14 +9,19 @@
     <script type="text/babel">
         const root = document.getElementById("root");
         function App() {
-            const [counter, setCounter] = React.useState(0);
-            const onClick = () => {
-                setCounter((current) => current + 1);
+            const [minutes, setMinutes] = React.useState();
+            const onChange = (event) => {
+                setMinutes(event.target.value);
             };
             return (
                 <div>
-                    <h3>Total clicks: {counter}</h3>
-                    <button onClick={onClick}>Click me</button>
+                    <h1 className="hi">Super coverter</h1>
+                    <label htmlFor="Minutes">Minutes</label>
+                    <input value={minutes} onChange={onChange} id="Minutes" placeholder="Minutes" type="number"/>
+                    <h4>You want to convert {minutes}</h4>
+                    <label htmlFor="Hours">Hours</label>
+                    <input id="Hours" placeholder="Hours" type="number"/>
+                    {/*JSX에서는 class를 className으로, for을 htmlFor로 사용*/}
                 </div>
             )
         };
