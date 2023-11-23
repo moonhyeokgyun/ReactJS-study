@@ -6,30 +6,24 @@
     <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- 브라우저는 JSX를 이해 못함 따라서 Babel로 JSX를 변환 -->
     <script type="text/babel">
         const root = document.getElementById("root");
-        function Title() {
-            return (
-                <h3 id="title" onMouseEnter={() => console.log("Mouse enter")}>
-                    Hello I'm title
-                </h3>
-            )
+        let counter = 0;
+        function countUp(){
+            counter += 1
+            render()
         };
-        const Button = () => (
-            <button style={{backgroundColor:"tomato"}} onClick={() => console.log("I'm clicked")}>
-                Click me
-            </button>
-        );
+        function render(){
+            ReactDOM.render(<Container/>, root)
+            {/*바뀐 counter 반영해서 re렌더링*/}
+        }
         const Container = () => (
             <div>
-                <Title/>
-                <Button/>
-                {/*JSX에서 주석하는 방법*/}
-                {/*Title과 Button을 함수화해서 렌더링*/}
-                {/*이름을 title, button으로 지어버리면 내가 만든 Title 태그가 아니라 title 태그로 인식*/}
+                <h3>Total clicks: {counter}</h3>
+                <button onClick={countUp}>Click me</button>
             </div>
         );
-        ReactDOM.render(<Container/>, root);
+        render();
+        {/*화면 자체 렌더링*/}
     </script>
 </html>
